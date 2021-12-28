@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../assets/css/follower-search.css";
 import GithubLogo from "../assets/images/github-logo.jpg";
 
-export default class FollowerSearch extends Component {
+export default class Search extends Component {
   render() {
     return (
       <div className="follower-search-box">
