@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default class Followers extends Component {
-  render() {
-    return (
-      <div>
-        <h4>Followers</h4>
-      </div>
-    );
-  }
+export default function Followers() {
+  return (
+    <div>
+      <Link to="/">Back</Link>
+      <h4>Followers</h4>
+    </div>
+  );
 }
