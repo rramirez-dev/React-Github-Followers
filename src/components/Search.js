@@ -32,7 +32,11 @@ export default function Search() {
         value={searchQuery}
         onChange={handleChange}
       />
-      <Link className="follower-search-btn" to="/followers">
+      <Link
+        className="follower-search-btn"
+        to="/followers"
+        state={{ query: searchQuery }}
+      >
         Get Followers
       </Link>
     </div>

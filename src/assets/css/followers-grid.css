@@ -1,0 +1,33 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+.followers-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  padding: 0;
+  gap: 1rem;
+  row-gap: 2rem;
+}
+
+.follower-grid-item {
+  background-color: transparent;
+  color: black;
+  padding: 0;
+  height: 5rem;
+  width: 5rem;
+}
+
+figcaption {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+.follower-grid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
