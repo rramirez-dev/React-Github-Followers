@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.modal {
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.modal-content {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  height: 95%;
+}
+
+.done-btn {
+  margin: 0 5px 0 0;
+  padding: 5px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  color: #4caf50;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  margin: 0 0 10px 0;
+  padding: 0;
+  justify-content: flex-end;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #edecec;
+}
+
+.login {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.avitar {
+  margin: 0 5px;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  scrollbar-width: none;
+  display: none;
+}
+
+.user-details-header-row {
+  display: flex;
+  margin: 0 0 10px 0;
+}
+
+.user-avitar-col {
+  flex: 0 30%;
+  padding: 0;
+}
+
+.user-info-col {
+  flex: 1;
+}
+
+.user-info {
+  color: gray;
+  line-height: 1.2rem;
+}
+
+#bio {
+  margin: 0 5px;
+}
+
+#github-footer {
+  display: block;
+  margin-top: 5px;
+  text-align: center;
+  color: gray;
+}
+
+#github-footer a {
+  font-size: 12px;
+}
+
+#join-date {
+  margin: 0 0 5px 0;
+}
+
+.location-icon {
+  display: inline;
+  color: gray;
+  margin: 0 2px 0 0;
+  padding: 0;
+}
+
+.user-stats {
+  display: block;
+  margin: 20px 10px; /* right margin does not work*/
+  padding: 10px;
+  width: calc(100% - 20px); /* Hack to fix right margin issue*/
+  height: 20%;
+  background-color: #edecec;
+  border-radius: 8px;
+}
+
+.stats-btn {
+  display: block;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  padding: 15px;
+  margin: 10px 0 0 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.github-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: space-between;
+  color: black;
+  font-weight: bold;
+}
+
+.github-stat-items {
+  display: flex;
+  row-gap: 5px;
+  align-content: space-between;
+  flex-direction: column;
+  font-size: 0.8rem;
+}
+
+.stat-item-header {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  column-gap: 6px;
+}
+
+.github-followers-btn {
+  background-color: #4caf50;
+}
+
+.github-profile-btn {
+  background-color: #c541d1;
+}

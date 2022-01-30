@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import UserDetails from "./UserDetails";
 import "../assets/css/followers-grid.css";
 
 export default function Followers() {
   const [followers, setFollowers] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+  const [showUserDetails, setShowUserDetails] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { query } = location.state ?? "";
@@ -20,6 +23,17 @@ export default function Followers() {
       .then((json) => setFollowers(json));
   }, []);
 
+  const handleFollowerSelection = (follower) => {
+    let username = follower.login;
+
+    fetch(`https://api.github.com/users/${username}`).then((res) => {
+      res.json().then((data) => {
+        setShowUserDetails(true);
+        setUserInfo(data);
+      });
+    });
+  };
+
   if (query == undefined) {
     return (
       <div>
@@ -34,10 +48,17 @@ export default function Followers() {
           <Link to="/">Back</Link>
           &nbsp; Followers for <strong>{query}</strong>
         </center>
-        <div className="followers-grid-container">
+        <div
+          className="followers-grid-container"
+          onClick={() => setShowUserDetails(false)}
+        >
           {followers.map((follower) => {
             return (
-              <figure key={follower["id"]} className="follower-grid-item">
+              <figure
+                key={follower["id"]}
+                className="follower-grid-item"
+                onClick={(e) => handleFollowerSelection(follower)}
+              >
                 <img
                   src={follower["avatar_url"]}
                   alt={follower["login"]}
@@ -47,6 +68,14 @@ export default function Followers() {
               </figure>
             );
           })}
+        </div>
+        <div>
+          {showUserDetails && (
+            <UserDetails
+              setShowUserDetails={setShowUserDetails}
+              userInfo={userInfo}
+            />
+          )}
         </div>
       </div>
     );

@@ -3,6 +3,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Chrome, Safari, Edge*/
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox hide scrollbar */
+html {
+  scrollbar-width: 0;
+}
 .followers-grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
