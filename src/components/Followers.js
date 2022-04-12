@@ -10,18 +10,17 @@ export default function Followers() {
   const location = useLocation();
   const navigate = useNavigate();
   const { query } = location.state ?? "";
+  const [page, setPage] = useState(1);
 
-  /*  Executed every time the component is rendered
-      When ever the values in [] change your hook will run
-      Passing an empty array will render onMount.
-      On cleanup(unMount) you can remove event listeners.
-      Cleanup runs first when your component is mounted
-  */
   useEffect(() => {
-    fetch(`https://api.github.com/users/${query}/followers?page=1`)
+    fetchFollowers(query, page);
+  }, []);
+
+  const fetchFollowers = (query, page) => {
+    fetch(`https://api.github.com/users/${query}/followers?page=${page}`)
       .then((response) => response.json())
       .then((json) => setFollowers(json));
-  }, []);
+  };
 
   const handleFollowerSelection = (follower) => {
     let username = follower.login;
