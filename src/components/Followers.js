@@ -9,10 +9,11 @@ export default function Followers() {
   const [showUserDetails, setShowUserDetails] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { query } = location.state ?? "";
+  const [query, setQuery] = useState(location.state.query ?? "");
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    console.log(location.state);
     fetchFollowers(query, page);
   }, []);
 
