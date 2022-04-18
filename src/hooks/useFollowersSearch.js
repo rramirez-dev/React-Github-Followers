@@ -35,7 +35,6 @@ export default function useFollowersSearch(query, page) {
         });
         setHasMore(res.data.length > 0);
         setLoading(false);
-        console.log(res.data);
       })
       .catch((e) => {
         if (axios.isCancel) return;

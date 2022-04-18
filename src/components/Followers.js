@@ -1,27 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useFollowersSearch from "../hooks/useFollowersSearch";
 import UserDetails from "./UserDetails";
 import "../assets/css/followers-grid.css";
 
 export default function Followers() {
-  const [followers, setFollowers] = useState([]);
+  // const [followers, setFollowers] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
   const [showUserDetails, setShowUserDetails] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [query, setQuery] = useState(location.state.query ?? "");
   const [page, setPage] = useState(1);
+  const { followers, hasMore, loading, error } = useFollowersSearch(
+    query,
+    page
+  );
 
-  useEffect(() => {
-    console.log(location.state);
-    fetchFollowers(query, page);
-  }, []);
+  // Ref is a value that presist after each render: user to refernce elements, document API
+  const observer = useRef();
 
-  const fetchFollowers = (query, page) => {
-    fetch(`https://api.github.com/users/${query}/followers?page=${page}`)
-      .then((response) => response.json())
-      .then((json) => setFollowers(json));
-  };
+  const lastFollowerRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
 
   const handleFollowerSelection = (follower) => {
     let username = follower.login;
@@ -55,6 +68,7 @@ export default function Followers() {
           {followers.map((follower) => {
             return (
               <figure
+                ref={lastFollowerRef}
                 key={follower["id"]}
                 className="follower-grid-item"
                 onClick={(e) => handleFollowerSelection(follower)}
