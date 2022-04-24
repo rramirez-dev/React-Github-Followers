@@ -5,7 +5,6 @@ import UserDetails from "./UserDetails";
 import "../assets/css/followers-grid.css";
 
 export default function Followers() {
-  // const [followers, setFollowers] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
   const [showUserDetails, setShowUserDetails] = useState(false);
   const location = useLocation();
