@@ -49,17 +49,20 @@ export default function Followers() {
   if (query == undefined) {
     return (
       <div>
-        <Link to="/">Back</Link>
+        <Link to="/">Search</Link>
         <h4>No Data</h4>
       </div>
     );
   } else {
     return (
       <div>
-        <center>
-          <Link to="/">Back</Link>
-          &nbsp; Followers for <strong>{query}</strong>
-        </center>
+        <div className="followers-header">
+          <Link to="/">&#60; Search</Link>
+          <div id="query" className="query-item">
+            {query}
+          </div>
+          <div id="add-favorite">&#43;</div>
+        </div>
         <div
           className="followers-grid-container"
           onClick={() => setShowUserDetails(false)}
