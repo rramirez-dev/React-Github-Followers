@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react/cjs/react.development";
 import "../assets/css/user-details.css";
+import "../assets/css/modal.css";
 import folderIcon from "../assets/images/folder.png";
 import menuIcon from "../assets/images/menu.png";
 import heartIcon from "../assets/images/heart.png";
@@ -8,6 +9,10 @@ import peopleIcon from "../assets/images/people.png";
 import locationPin from "../assets/images/icons8-pin-64.png";
 
 export default function UserDetails(props) {
+  const showGithubProfile = () => {
+    console.log("Load Github Profile");
+  };
+
   return (
     <div className="modal">
       <div className="modal-content scrollbar-hidden">
@@ -68,7 +73,10 @@ export default function UserDetails(props) {
               <div>{props.userInfo.public_gists}</div>
             </div>
           </div>
-          <button className="stats-btn github-profile-btn">
+          <button
+            className="stats-btn github-profile-btn"
+            onClick={showGithubProfile}
+          >
             Github Profile
           </button>
         </div>
