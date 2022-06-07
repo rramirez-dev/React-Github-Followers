@@ -2,6 +2,12 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useFollowersSearch from "../hooks/useFollowersSearch";
 import UserDetails from "./UserDetails";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  solid,
+  regular,
+  brands,
+} from "@fortawesome/fontawesome-svg-core/import.macro";
 import "../assets/css/followers-grid.css";
 
 export default function Followers() {
@@ -57,11 +63,16 @@ export default function Followers() {
     return (
       <div>
         <div className="followers-header">
-          <Link to="/">&#60; Search</Link>
+          <Link to="/">
+            <FontAwesomeIcon icon={solid("chevron-left")} />
+            &nbsp; Search
+          </Link>
           <div id="query" className="query-item">
             {query}
           </div>
-          <div id="add-favorite">&#43;</div>
+          <div id="add-favorite">
+            <FontAwesomeIcon icon={solid("plus")} />
+          </div>
         </div>
         <div
           className="followers-grid-container"
