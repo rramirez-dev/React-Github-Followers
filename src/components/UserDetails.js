@@ -7,6 +7,7 @@ import menuIcon from "../assets/images/menu.png";
 import heartIcon from "../assets/images/heart.png";
 import peopleIcon from "../assets/images/people.png";
 import locationPin from "../assets/images/icons8-pin-64.png";
+import { Link } from "react-router-dom";
 
 export default function UserDetails(props) {
   const showGithubProfile = () => {
@@ -97,9 +98,14 @@ export default function UserDetails(props) {
               <div>{props.userInfo.followers}</div>
             </div>
           </div>
-          <button className="stats-btn github-followers-btn">
-            Github Followers
-          </button>
+          <Link
+            className="stats-btn github-followers-btn"
+            to="/followers"
+            onClick={() => window.location.reload()}
+            state={{ query: props.userInfo.login }}
+          >
+            Followers
+          </Link>
         </div>
         <footer id="github-footer">
           <p id="join-date">
